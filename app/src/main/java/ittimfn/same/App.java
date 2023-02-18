@@ -7,14 +7,12 @@ import ittimfn.same.controller.Controller;
 
 public class App {
     public void exec(String[] args) {
-        Controller c1 = new Controller();
-        Controller c2 = new Controller();
-
-        c1.exec("hoge");
-        c2.exec("piyo");
+        for(int i = 0 ; i < 5 ; i++) {
+            new Controller().exec(Integer.toString(i));
+        }
     }
 
     public static void main(String[] args) {
-        new App().exec(args);;
+        new App().exec(args);
     }
 }

@@ -14,7 +14,18 @@ public class AppLogger {
     }
     
     public void log(Object obj) {
-        this.logger.info("{},{}", obj, ThreadContext.get(KEY));
+        if (ThreadContext.containsKey(KEY)) {
+            this.logger.info(this.infoMessage(obj));
+        } else {
+            this.logger.error(this.errorMessage(obj));
+        }
+    }
+
+    private String infoMessage(Object obj) {
+        return String.format("%s, I have %s.", obj, ThreadContext.get(KEY));
+    }
+    private String errorMessage(Object obj) {
+        return String.format("%s, %s is Not Found.", obj, KEY);
     }
 
     public void put(String value) {

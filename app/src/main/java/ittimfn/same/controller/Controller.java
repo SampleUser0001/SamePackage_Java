@@ -13,10 +13,12 @@ public class Controller {
         try {
             this.logger.put(value);
 
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             this.logger.log("hogehoge");
+            Thread.sleep(1000);
+            throw new Exception();
         } catch(Exception e) {
-
+            this.logger.log(e);
         } finally {
             this.logger.remove();
         }
